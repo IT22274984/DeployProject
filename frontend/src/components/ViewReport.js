@@ -7,7 +7,7 @@ export default function AllProducts() {
     const [searchTerm, setSearchTerm] = useState("");
 
     const getData = async () => {
-        await axios.get("http://localhost:8080/products")  // Assuming your API endpoint for products is '/products'
+        await axios.get("https://deploy-projectkg.vercel.app/products")  // Assuming your API endpoint for products is '/products'
         .then((res) => {            
             setProducts(res.data);
         })
