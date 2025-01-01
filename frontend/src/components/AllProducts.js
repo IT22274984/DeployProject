@@ -11,7 +11,7 @@ export default function AllProducts() {
 
     const getData = async () => {
         try {
-            const res = await axios.get("http://localhost:8080/products");
+            const res = await axios.get("https://deploy-projectkg.vercel.app/products");
             console.log("Fetched Products:", res.data); // Log API response
             setProducts(res.data);
         } catch (err) {
@@ -38,7 +38,7 @@ export default function AllProducts() {
     };
 
     const onDelete = async (id) => {
-        await axios.delete(`http://localhost:8080/products/${id}`)
+        await axios.delete(`https://deploy-projectkg.vercel.app/${id}`)
             .then(() => {
                 alert("Product Deleted Successfully");
                 getData();
