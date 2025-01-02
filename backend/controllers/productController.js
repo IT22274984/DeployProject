@@ -35,10 +35,14 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all products
-exports.findAll = (req, res) => {
-    Product.find()
-        .then(products => res.send(products))
-        .catch(err => res.status(500).send({ message: err.message || "Error occurred while retrieving product information" }));
+exports.findAll = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 10; // Default limit is 10
+    const products = await Product.find().limit(limit);
+    res.status(200).send(products);
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error retrieving products" });
+  }
 };
 
 // Retrieve a single product by ID
