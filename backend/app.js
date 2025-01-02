@@ -2,29 +2,24 @@
 
 const express = require("express");
 const dotenv = require("dotenv");
-const cors = require("cors")
+const cors = require("cors");
 const connectDB = require("./db");
 
 const app = express();
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
 
 // Connect to MongoDB
 connectDB();
 
+// Middleware
 app.use(cors());
-
-// Parse JSON request bodies
 app.use(express.json());
 
-// Set up your routes
-app.use('/', require('./routes/routes.js'));
+// Routes
+app.use('/api', require('./routes/routes'));
 
-
-const PORT = process.env.PORT || 8080;
-
-// Start the server
-//app.listen(PORT, () => {console.log(`Server is running on http://localhost:${PORT}`);});
-
+// Export app for serverless functions
 module.exports = app;
+
