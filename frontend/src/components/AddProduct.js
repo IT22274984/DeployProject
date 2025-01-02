@@ -36,7 +36,7 @@ export default function AddProduct() {
             collecteddate: productcollecteddate
         };
 
-        await axios.post("https://deploy-projectkg.vercel.app/products", newProduct)
+        await axios.post("/api/products", newProduct)
             .then(() => {
                 alert("Product Added Successfully");
                 navigate('/products');
