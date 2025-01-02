@@ -71,7 +71,7 @@ export default function UpdateProduct() {
             };
 
             try {
-                await axios.put(`https://deploy-projectkg.vercel.app/${id}`, updatedProduct);
+                await axios.put(`https://deploy-projectkg.vercel.app/products/${id}`, updatedProduct);
                 alert("Product Updated Successfully");
                 navigate('/products');
                 localStorage.clear();
