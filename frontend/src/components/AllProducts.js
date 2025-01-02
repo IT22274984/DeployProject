@@ -38,7 +38,7 @@ export default function AllProducts() {
     };
 
     const onDelete = async (id) => {
-        await axios.delete(`https://deploy-projectkg.vercel.app/products/${id}`)
+        await axios.delete("https://deploy-projectkg.vercel.app/products/${id}")
             .then(() => {
                 alert("Product Deleted Successfully");
                 getData();
