@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api', require('./routes/routes'));
+app.use('/', require('./routes/routes'));
 
 // Export app for serverless functions
 module.exports = app;
