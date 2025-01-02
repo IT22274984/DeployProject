@@ -88,14 +88,20 @@ exports.update = (req, res) => {
 // Delete a product by ID
 exports.delete = (req, res) => {
     const id = req.params.id;
-
+    console.log(`Deleting product with id: ${id}`);
     Product.findByIdAndDelete(id)
-        .then(data => {
-            if (!data) {
-                res.status(404).send({ message: `Cannot delete product with id ${id}. Maybe id is incorrect.` });
-            } else {
-                res.status(201).send({ message: "Product deleted successfully." });
-            }
-        })
-        .catch(err => res.status(500).send({ message: `Error deleting product with id ${id}` }));
+      .then(data => {
+          if (!data) {
+              res.status(404).send({ message: `Cannot delete product with id ${id}` });
+          } else {
+              res.send({ message: "Product was deleted successfully!" });
+          }
+      })
+      .catch(err => {
+          console.error(`Error deleting product with id ${id}:`, err);
+          res.status(500).send({
+              message: "Could not delete product with id " + id
+          });
+      });
 };
+
